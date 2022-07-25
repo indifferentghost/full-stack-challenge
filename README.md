@@ -29,6 +29,7 @@ whether the fruit is in season or not.
 
 1. Create your backend webserver
 2. Create an API that returns the JSON found in `fruitList.json`
+   1. You can test your API with this [Postman collection](/SmartRent-Full-Stack-Interview-Challenge.postman_collection.json)
 3. Create a simple frontend that fetches the list of fruit from your backend API and loads it into the application state
 4. In a list, render the names of the fruit, their colors, and whether or not they are in season or not
 5. In the query string allow the user to filter fruit by:

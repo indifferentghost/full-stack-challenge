@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "75033ceb-1290-4b2a-bf83-469b88b0ffd7",
+		"name": "SmartRent Full Stack Interview Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Fruit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate JSON Response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).to.eql([",
+							"        {",
+							"            \"name\": \"Apple\",",
+							"            \"colors\": [\"red\", \"green\", \"yellow\"],",
+							"            \"in_season\": true",
+							"        },",
+							"        {",
+							"            \"name\": \"Orange\",",
+							"            \"colors\": [\"orange\"],",
+							"            \"in_season\": true",
+							"        },",
+							"        {",
+							"            \"name\": \"Grapes\",",
+							"            \"colors\": [\"purple\", \"green\"],",
+							"            \"in_season\": false",
+							"        },",
+							"        {",
+							"            \"name\": \"Lime\",",
+							"            \"colors\": [\"green\"],",
+							"            \"in_season\": false",
+							"        },",
+							"        {",
+							"            \"name\": \"Banana\",",
+							"            \"colors\": [\"yellow\"],",
+							"            \"in_season\": false,",
+							"        },",
+							"        {",
+							"            \"name\": \"Watermelon\",",
+							"            \"colors\": [\"red\"],",
+							"            \"in_season\": false",
+							"        },",
+							"        {",
+							"            \"name\": \"Blueberry\",",
+							"            \"colors\": [\"blue\"],",
+							"            \"in_season\": true",
+							"        },",
+							"        {",
+							"            \"name\": \"Coconut\",",
+							"            \"colors\": [\"white\"],",
+							"            \"in_season\": true",
+							"        }",
+							"    ]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "/fruit",
+					"path": [
+						"fruit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Red Fruit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate JSON Response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).to.eql([",
+							"        {",
+							"            \"name\": \"Apple\",",
+							"            \"colors\": [\"red\", \"green\", \"yellow\"],",
+							"            \"in_season\": true",
+							"        },",
+							"        {",
+							"            \"name\": \"Watermelon\",",
+							"            \"colors\": [\"red\"],",
+							"            \"in_season\": false",
+							"        },",
+							"    ]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "/fruit?color=red",
+					"path": [
+						"fruit"
+					],
+					"query": [
+						{
+							"key": "color",
+							"value": "red"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get In Season Fruit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate JSON Response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).to.eql([",
+							"        {",
+							"            \"name\": \"Apple\",",
+							"            \"colors\": [\"red\", \"green\", \"yellow\"],",
+							"            \"in_season\": true",
+							"        },",
+							"        {",
+							"            \"name\": \"Orange\",",
+							"            \"colors\": [\"orange\"],",
+							"            \"in_season\": true",
+							"        },",
+							"        {",
+							"            \"name\": \"Coconut\",",
+							"            \"colors\": [\"white\"],",
+							"            \"in_season\": true",
+							"        }",
+							"    ]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "/fruit?in_season=true",
+					"path": [
+						"fruit"
+					],
+					"query": [
+						{
+							"key": "in_season",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Out of Season Fruit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate JSON Response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).to.eql([",
+							"        {",
+							"            \"name\": \"Grapes\",",
+							"            \"colors\": [\"purple\", \"green\"],",
+							"            \"in_season\": false",
+							"        },",
+							"        {",
+							"            \"name\": \"Lime\",",
+							"            \"colors\": [\"green\"],",
+							"            \"in_season\": false",
+							"        },",
+							"        {",
+							"            \"name\": \"Banana\",",
+							"            \"colors\": [\"yellow\"],",
+							"            \"in_season\": false,",
+							"        },",
+							"        {",
+							"            \"name\": \"Watermelon\",",
+							"            \"colors\": [\"red\"],",
+							"            \"in_season\": false",
+							"        },",
+							"    ]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "/fruit?in_season=false",
+					"path": [
+						"fruit"
+					],
+					"query": [
+						{
+							"key": "in_season",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Fruit with Search (Valid \"ap\")",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate JSON Response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).to.eql([",
+							"        {",
+							"            \"name\": \"Apple\",",
+							"            \"colors\": [\"red\", \"green\", \"yellow\"],",
+							"            \"in_season\": true",
+							"        },",
+							"        {",
+							"            \"name\": \"Grapes\",",
+							"            \"colors\": [\"purple\", \"green\"],",
+							"            \"in_season\": false",
+							"        },",
+							"    ]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "/fruit?name=ap",
+					"path": [
+						"fruit"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "ap"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Fruit with Search (Invalid \"tomato\")",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate JSON Response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).to.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "/fruit?name=tomato",
+					"path": [
+						"fruit"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "tomato"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
