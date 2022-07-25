@@ -17,6 +17,9 @@ For this coding challenge, you will be working on both the backend of the applic
 - Use the languages you feel most comfortable in
 - Refer to Google or documentation as needed
 
+#### Timeframe
+We expect most candidates to spend anywhere between 60 and 90 minutes completing the challenge.
+
 ### Project Description
 
 We are asking you to use a JSON blob that represents a list of fruit, return it from a backend API and then
