@@ -10,3 +10,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// There isn't scalar list support for SQLite in Prisma, in lieu a one-to-many works :)
+model Color {
+  id      Int    @id @default(autoincrement())
+  fruit   Fruit  @relation(fields: [fruitId], references: [id], onDelete: Cascade)
+  fruitId Int
+  color   String
+}
+
+model Fruit {
+  id        Int     @id @default(autoincrement())
+  // The prisma schema doesn't currently support text-free-search if you modify Fruit
+  // ensure to add COLLATE NOCASE to the name on the migration
+  // https://www.prisma.io/docs/concepts/components/prisma-client/case-sensitivity#sqlite-provider
+  name      String
+  in_season Boolean
+  colors    Color[]
+}
+

@@ -1,0 +1,14 @@
+-- CreateTable
+CREATE TABLE "Color" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "fruitId" INTEGER NOT NULL,
+    "color" TEXT NOT NULL,
+    CONSTRAINT "Color_fruitId_fkey" FOREIGN KEY ("fruitId") REFERENCES "Fruit" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Fruit" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL COLLATE NOCASE,
+    "in_season" BOOLEAN NOT NULL
+);
