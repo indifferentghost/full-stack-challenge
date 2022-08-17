@@ -1,17 +1,10 @@
 import { Prisma } from "@prisma/client";
+import { fruitSelect, FruitSerialized } from "lib/prisma-types";
+import prisma from "lib/prisma";
+
 import type { NextApiRequest, NextApiResponse } from "next";
 
-const fruitSelect = Prisma.validator<Prisma.FruitSelect>()({
-  name: true,
-  in_season: true,
-  colors: { select: { color: true } },
-});
-
-type FoundFruit = Prisma.FruitGetPayload<{ select: typeof fruitSelect }>;
-
-type Data =
-  | (Omit<FoundFruit, "colors"> & { colors: string[] })[]
-  | { error: string };
+type Data = FruitSerialized[] | { error: string };
 
 export default async function handler(
   req: NextApiRequest,
@@ -24,9 +17,12 @@ export default async function handler(
   const filter: Prisma.FruitWhereInput = {};
 
   if ("in_season" in req.query) {
-    filter.in_season = { true: true, false: false }[
-      req.query.in_season as string
-    ];
+    const in_season = `${req.query.in_season}`;
+    const options = { true: true, false: false };
+    if (!(in_season in options)) {
+      res.status(422).json({ error: "in_season not valid" });
+    }
+    filter.in_season = options[in_season as keyof typeof options];
   }
   if ("name" in req.query) {
     filter.name = { contains: `${req.query.name}` };
