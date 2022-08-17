@@ -21,7 +21,7 @@
     },
     {
         "name": "Banana",
-        "colors": ["yellow",
+        "colors": ["yellow"],
         "in_season": false
     },
     {
